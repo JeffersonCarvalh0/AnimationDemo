@@ -4,10 +4,11 @@ import Animated from 'react-native-reanimated';
 import {onScrollEvent} from 'react-native-redash';
 
 import listItems from './listItems';
+import {HEADER_HEIGHT} from './Header';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
+    marginTop: HEADER_HEIGHT,
   },
   title: {
     fontSize: 32,
@@ -35,9 +36,9 @@ const ListTile = ({text}: {text: string}) => {
 const List = ({y}: Props) => {
   return (
     <Animated.ScrollView
-      contentContainerStyle={styles.container}
-      scrollEventThrottle={16}
-      onScroll={onScrollEvent({y})}>
+      scrollEventThrottle={1}
+      onScroll={onScrollEvent({y})}
+      contentContainerStyle={styles.container}>
       {listItems.map((group) => {
         return (
           <View key={group.title + 'view'}>

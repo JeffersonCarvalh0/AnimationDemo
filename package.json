@@ -15,6 +15,7 @@
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.8.0",
     "react-native-redash": "^14.0.4",
+    "react-native-vector-icons": "^6.6.0",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
