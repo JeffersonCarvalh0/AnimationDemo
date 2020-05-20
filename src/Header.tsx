@@ -16,6 +16,7 @@ import {HEADER_IMAGE_HEIGHT} from './HeaderImage';
 
 const ICON_SIZE = 36;
 const ICON_MARGIN = 5;
+export const TABS_MARGIN = 10;
 export const MIN_HEADER_HEIGHT = 100;
 
 const styles = StyleSheet.create({
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   bottomRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 5,
+    margin: TABS_MARGIN,
   },
 });
 
@@ -86,7 +87,7 @@ const Header = ({y, tabs}: Props) => {
       </View>
       <Animated.View style={[styles.bottomRow, {top: titleTop}]}>
         <Animated.Text>Some brief description of the list</Animated.Text>
-        <Tabs tabs={tabs} opacity={opacity} />
+        <Tabs tabs={tabs} opacity={opacity} y={y} />
       </Animated.View>
     </View>
   );

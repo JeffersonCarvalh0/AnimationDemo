@@ -2,13 +2,15 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
+export const TABS_MARGIN = 8;
+
 const styles = StyleSheet.create({
   container: {
     height: 45,
     paddingHorizontal: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 8,
+    marginRight: TABS_MARGIN,
   },
   text: {
     fontSize: 14,
@@ -16,27 +18,22 @@ const styles = StyleSheet.create({
 });
 
 interface TabProps {
-  color: string;
   name: string;
-  onMeasurement?: (measurement: number) => void;
+  onMeasurement: (measurement: number) => void;
   onPress?: () => void;
 }
 
-export default ({name, color, onMeasurement, onPress}: TabProps) => {
+export default ({name, onMeasurement, onPress}: TabProps) => {
   return (
     <TouchableWithoutFeedback {...{onPress}}>
       <View
-        onLayout={
-          onMeasurement
-            ? ({
-                nativeEvent: {
-                  layout: {width},
-                },
-              }) => onMeasurement(width)
-            : undefined
-        }
+        onLayout={({
+          nativeEvent: {
+            layout: {width},
+          },
+        }) => onMeasurement(width)}
         style={styles.container}>
-        <Text style={[styles.text, {color}]}>{name}</Text>
+        <Text style={[styles.text]}>{name}</Text>
       </View>
     </TouchableWithoutFeedback>
   );

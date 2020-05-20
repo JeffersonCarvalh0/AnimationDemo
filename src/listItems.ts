@@ -1,7 +1,10 @@
 const listItems = [
   {
-    title: '1st group',
+    title: 'first group',
     items: [
+      {
+        text: 'item1',
+      },
       {
         text: 'item2',
       },
@@ -10,15 +13,15 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
   {
-    title: '2nd group',
+    title: 'second group',
     items: [
+      {
+        text: 'item1',
+      },
       {
         text: 'item2',
       },
@@ -27,15 +30,15 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
   {
-    title: '3rd group',
+    title: 'third group',
     items: [
+      {
+        text: 'item1',
+      },
       {
         text: 'item2',
       },
@@ -44,9 +47,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -54,6 +54,9 @@ const listItems = [
     title: '4th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -61,9 +64,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -71,6 +71,9 @@ const listItems = [
     title: '5th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -78,9 +81,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -88,6 +88,9 @@ const listItems = [
     title: '6th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -95,9 +98,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -105,6 +105,9 @@ const listItems = [
     title: '7th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -112,9 +115,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -122,6 +122,9 @@ const listItems = [
     title: '8th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -129,9 +132,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -139,6 +139,9 @@ const listItems = [
     title: '9th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -146,9 +149,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -156,6 +156,9 @@ const listItems = [
     title: '10th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -163,9 +166,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -173,6 +173,9 @@ const listItems = [
     title: '11th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -180,9 +183,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -190,6 +190,9 @@ const listItems = [
     title: '12th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -197,9 +200,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -207,6 +207,9 @@ const listItems = [
     title: '13th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -214,9 +217,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
@@ -224,6 +224,9 @@ const listItems = [
     title: '14th group',
     items: [
       {
+        text: 'item1',
+      },
+      {
         text: 'item2',
       },
       {
@@ -231,9 +234,6 @@ const listItems = [
       },
       {
         text: 'item4',
-      },
-      {
-        text: 'item5',
       },
     ],
   },
