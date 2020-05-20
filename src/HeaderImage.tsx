@@ -8,9 +8,6 @@ const {height: wHeight, width: wWidth} = Dimensions.get('window');
 export const HEADER_IMAGE_HEIGHT = wHeight / 3;
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
   image: {
     position: 'absolute',
     top: 0,
@@ -24,25 +21,23 @@ interface Props {
 }
 
 const HeaderImage = ({y}: Props) => {
-  const headerHeight = interpolate(y, {
+  const height = interpolate(y, {
     inputRange: [-100, 0],
     outputRange: [HEADER_IMAGE_HEIGHT + 100, HEADER_IMAGE_HEIGHT],
     extrapolateRight: Extrapolate.CLAMP,
   });
 
-  const headerTop = interpolate(y, {
+  const top = interpolate(y, {
     inputRange: [0, 100],
     outputRange: [0, -100],
     extrapolateLeft: Extrapolate.CLAMP,
   });
 
   return (
-    <View style={styles.container}>
-      <Animated.Image
-        style={[styles.image, {height: headerHeight, top: headerTop}]}
-        source={headerImage}
-      />
-    </View>
+    <Animated.Image
+      style={[styles.image, {height, top}]}
+      source={headerImage}
+    />
   );
 };
 

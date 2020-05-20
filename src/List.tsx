@@ -4,9 +4,14 @@ import Animated from 'react-native-reanimated';
 import {onScrollEvent} from 'react-native-redash';
 
 import listItems from './listItems';
-import {HEADER_HEIGHT} from './Header';
+import {HEADER_IMAGE_HEIGHT} from './HeaderImage';
+import {MIN_HEADER_HEIGHT} from './Header';
 
 const styles = StyleSheet.create({
+  emptyTopSpace: {
+    height: HEADER_IMAGE_HEIGHT,
+    marginBottom: MIN_HEADER_HEIGHT,
+  },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
@@ -34,6 +39,7 @@ const List = ({y, onMeasurement}: Props) => {
       style={StyleSheet.absoluteFill}
       scrollEventThrottle={1}
       onScroll={onScrollEvent({y})}>
+      <View style={styles.emptyTopSpace} />
       {listItems.map((group, index) => {
         return (
           <View
