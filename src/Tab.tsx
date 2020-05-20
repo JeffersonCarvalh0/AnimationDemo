@@ -6,7 +6,7 @@ export const TABS_MARGIN = 8;
 const styles = StyleSheet.create({
   container: {
     height: 45,
-    paddingHorizontal: 8,
+    paddingHorizontal: TABS_MARGIN,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: TABS_MARGIN,
@@ -25,14 +25,16 @@ interface TabProps {
 export default ({name, onMeasurement, onPress}: TabProps) => {
   return (
     <TouchableNativeFeedback onPress={onPress}>
-      <View
-        onLayout={({
-          nativeEvent: {
-            layout: {width},
-          },
-        }) => onMeasurement(width)}
-        style={styles.container}>
-        <Text style={[styles.text]}>{name}</Text>
+      <View style={styles.container}>
+        <Text
+          style={[styles.text]}
+          onLayout={({
+            nativeEvent: {
+              layout: {width: width},
+            },
+          }) => onMeasurement(width + TABS_MARGIN * 2)}>
+          {name}
+        </Text>
       </View>
     </TouchableNativeFeedback>
   );

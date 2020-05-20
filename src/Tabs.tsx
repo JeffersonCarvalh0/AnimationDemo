@@ -28,12 +28,11 @@ const styles = StyleSheet.create({
 interface Props {
   y: Animated.Value<number>;
   tabs: TabModel[];
-  onPress?: (index: number) => void;
   opacity: Animated.Node<number>;
   scrollViewRef: React.RefObject<Animated.ScrollView>;
 }
 
-const Tabs = ({tabs, onPress, opacity, y, scrollViewRef}: Props) => {
+const Tabs = ({tabs, opacity, y, scrollViewRef}: Props) => {
   const currentIndex = useValue(0);
   const indexTransition = withTransition(currentIndex);
 
@@ -87,7 +86,7 @@ const Tabs = ({tabs, onPress, opacity, y, scrollViewRef}: Props) => {
           <Tab
             onMeasurement={(measurement) => {
               measurements[index] = measurement;
-              setMeasurements(measurements);
+              setMeasurements([...measurements]);
             }}
             onPress={() => {
               if (scrollViewRef.current) {

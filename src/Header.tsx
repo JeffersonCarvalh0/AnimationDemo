@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Animated, {
   interpolate,
   Extrapolate,
@@ -87,7 +87,7 @@ const Header = ({y, tabs, scrollViewRef}: Props) => {
         </Animated.Text>
       </View>
       <Animated.View style={[styles.bottomRow, {top: titleTop}]}>
-        <Animated.Text>Some brief description of the list</Animated.Text>
+        <Text>Some brief description of the list</Text>
         <Tabs
           tabs={tabs}
           opacity={opacity}
