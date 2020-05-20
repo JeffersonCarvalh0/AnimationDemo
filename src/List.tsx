@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import Animated from 'react-native-reanimated';
 import {onScrollEvent} from 'react-native-redash';
 
@@ -7,9 +7,6 @@ import listItems from './listItems';
 import {HEADER_HEIGHT} from './Header';
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: HEADER_HEIGHT,
-  },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
@@ -23,30 +20,41 @@ const styles = StyleSheet.create({
 
 interface Props {
   y: Animated.Value<number>;
+  onMeasurement: (index: number, tab: TabModel) => void;
 }
 
-const ListTile = ({text}: {text: string}) => {
-  return (
-    <View>
-      <Text style={styles.item}>{text}</Text>
-    </View>
-  );
-};
+export interface TabModel {
+  name: string;
+  anchor: number;
+}
 
-const List = ({y}: Props) => {
+const List = ({y, onMeasurement}: Props) => {
   return (
     <Animated.ScrollView
+      style={StyleSheet.absoluteFill}
       scrollEventThrottle={1}
-      onScroll={onScrollEvent({y})}
-      contentContainerStyle={styles.container}>
-      {listItems.map((group) => {
+      onScroll={onScrollEvent({y})}>
+      {listItems.map((group, index) => {
         return (
-          <View key={group.title + 'view'}>
+          <View
+            key={group.title + 'view'}
+            onLayout={({
+              nativeEvent: {
+                layout: {y: anchor},
+              },
+            }) =>
+              onMeasurement(index, {
+                name: group.title,
+                anchor: anchor - 142,
+              })
+            }>
             <Text key="group.title" style={styles.title}>
               {group.title}
             </Text>
             {group.items.map((item) => (
-              <ListTile key={group.title + item.text} text={item.text} />
+              <View key={group.title + item.text}>
+                <Text style={styles.item}>{item.text}</Text>
+              </View>
             ))}
           </View>
         );

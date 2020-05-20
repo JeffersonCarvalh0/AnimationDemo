@@ -1,24 +1,21 @@
 import React from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Animated, {interpolate, Extrapolate} from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import headerImage from './assets/header.jpg';
+import {TabModel} from './List';
+import Tabs from './Tabs';
+import {HEADER_IMAGE_HEIGHT} from './HeaderImage';
 
-const {height: wHeight, width: wWidth} = Dimensions.get('window');
-export const HEADER_HEIGHT = wHeight / 3;
 const ICON_SIZE = 36;
 const ICON_MARGIN = 5;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-  },
-  image: {
     position: 'absolute',
     top: 0,
-    width: wWidth,
-    resizeMode: 'cover',
+    left: 0,
+    right: 0,
   },
   topRow: {
     elevation: 2,
@@ -41,39 +38,24 @@ const styles = StyleSheet.create({
 
 interface Props {
   y: Animated.Value<number>;
+  tabs: TabModel[];
 }
 
-const Header = ({y}: Props) => {
-  const headerHeight = interpolate(y, {
-    inputRange: [-100, 0],
-    outputRange: [HEADER_HEIGHT + 100, HEADER_HEIGHT],
-    extrapolateRight: Extrapolate.CLAMP,
-  });
-
-  const headerTop = interpolate(y, {
-    inputRange: [0, 100],
-    outputRange: [0, -100],
-    extrapolateLeft: Extrapolate.CLAMP,
-  });
-
+const Header = ({y, tabs}: Props) => {
   const titleTop = interpolate(y, {
-    inputRange: [0, HEADER_HEIGHT],
-    outputRange: [HEADER_HEIGHT, 0],
+    inputRange: [0, HEADER_IMAGE_HEIGHT],
+    outputRange: [HEADER_IMAGE_HEIGHT, 0],
     extrapolateRight: Extrapolate.CLAMP,
   });
 
   const titleLeft = interpolate(y, {
-    inputRange: [0, HEADER_HEIGHT],
+    inputRange: [0, HEADER_IMAGE_HEIGHT],
     outputRange: [-(ICON_SIZE + ICON_MARGIN), 0],
     extrapolateRight: Extrapolate.CLAMP,
   });
 
   return (
     <View style={styles.container}>
-      <Animated.Image
-        style={[styles.image, {height: headerHeight, top: headerTop}]}
-        source={headerImage}
-      />
       <View style={styles.topRow}>
         <Icon style={styles.icon} name="arrow-back" size={ICON_SIZE} />
         <Animated.Text style={[styles.title, {top: titleTop, left: titleLeft}]}>
@@ -81,6 +63,7 @@ const Header = ({y}: Props) => {
         </Animated.Text>
       </View>
       <Animated.View style={[styles.bottomRow, {top: titleTop}]}>
+        <Tabs tabs={tabs} y={y} />
         <Animated.Text>Some brief description of the list</Animated.Text>
       </Animated.View>
     </View>
