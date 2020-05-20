@@ -53,9 +53,10 @@ const styles = StyleSheet.create({
 interface Props {
   y: Animated.Value<number>;
   tabs: TabModel[];
+  scrollViewRef: React.RefObject<Animated.ScrollView>;
 }
 
-const Header = ({y, tabs}: Props) => {
+const Header = ({y, tabs, scrollViewRef}: Props) => {
   const toggle = useValue<0 | 1>(0);
 
   const titleTop = interpolate(y, {
@@ -87,7 +88,12 @@ const Header = ({y, tabs}: Props) => {
       </View>
       <Animated.View style={[styles.bottomRow, {top: titleTop}]}>
         <Animated.Text>Some brief description of the list</Animated.Text>
-        <Tabs tabs={tabs} opacity={opacity} y={y} />
+        <Tabs
+          tabs={tabs}
+          opacity={opacity}
+          y={y}
+          scrollViewRef={scrollViewRef}
+        />
       </Animated.View>
     </View>
   );

@@ -30,9 +30,10 @@ interface Props {
   tabs: TabModel[];
   onPress?: (index: number) => void;
   opacity: Animated.Node<number>;
+  scrollViewRef: React.RefObject<Animated.ScrollView>;
 }
 
-const Tabs = ({tabs, onPress, opacity, y}: Props) => {
+const Tabs = ({tabs, onPress, opacity, y, scrollViewRef}: Props) => {
   const currentIndex = useValue(0);
   const indexTransition = withTransition(currentIndex);
 
@@ -49,7 +50,7 @@ const Tabs = ({tabs, onPress, opacity, y}: Props) => {
     inputRange: tabs.map((_, i) => i),
     outputRange: tabs.map(
       (_, i) =>
-        -measurements.filter((_, j) => j < i).reduce((acc, m) => acc + m, 0) -
+        -measurements.filter((__, j) => j < i).reduce((acc, m) => acc + m, 0) -
         TABS_MARGIN * i,
     ),
   });
@@ -88,7 +89,11 @@ const Tabs = ({tabs, onPress, opacity, y}: Props) => {
               measurements[index] = measurement;
               setMeasurements(measurements);
             }}
-            onPress={onPress ? onPress.bind(null, index) : undefined}
+            onPress={() => {
+              if (scrollViewRef.current) {
+                scrollViewRef.current.getNode().scrollTo({y: tab.anchor + 1});
+              }
+            }}
             {...tab}
           />
         </Animated.View>

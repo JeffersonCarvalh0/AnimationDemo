@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {StyleSheet, Text, View, TouchableNativeFeedback} from 'react-native';
 
 export const TABS_MARGIN = 8;
 
@@ -20,12 +19,12 @@ const styles = StyleSheet.create({
 interface TabProps {
   name: string;
   onMeasurement: (measurement: number) => void;
-  onPress?: () => void;
+  onPress: () => void;
 }
 
 export default ({name, onMeasurement, onPress}: TabProps) => {
   return (
-    <TouchableWithoutFeedback {...{onPress}}>
+    <TouchableNativeFeedback onPress={onPress}>
       <View
         onLayout={({
           nativeEvent: {
@@ -35,6 +34,6 @@ export default ({name, onMeasurement, onPress}: TabProps) => {
         style={styles.container}>
         <Text style={[styles.text]}>{name}</Text>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableNativeFeedback>
   );
 };

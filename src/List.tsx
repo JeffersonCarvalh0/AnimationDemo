@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
 interface Props {
   y: Animated.Value<number>;
   onMeasurement: (index: number, tab: TabModel) => void;
+  scrollViewRef: React.RefObject<Animated.ScrollView>;
 }
 
 export interface TabModel {
@@ -33,9 +34,10 @@ export interface TabModel {
   anchor: number;
 }
 
-const List = ({y, onMeasurement}: Props) => {
+const List = ({y, onMeasurement, scrollViewRef}: Props) => {
   return (
     <Animated.ScrollView
+      ref={scrollViewRef}
       style={StyleSheet.absoluteFill}
       scrollEventThrottle={1}
       onScroll={onScrollEvent({y})}>
@@ -51,7 +53,7 @@ const List = ({y, onMeasurement}: Props) => {
             }) =>
               onMeasurement(index, {
                 name: group.title,
-                anchor: anchor - 142,
+                anchor: anchor - 100,
               })
             }>
             <Text key="group.title" style={styles.title}>
